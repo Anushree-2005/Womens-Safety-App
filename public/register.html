@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Register</h2>
+    <form id="registerForm" action="/register" method="POST">
+
+       
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+    
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" required>
+    
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+<!-- 
+        <button type="button" onclick="sendOTP()">Send OTP</button>
+        <div id="otpSection" style="display: none;">
+            <input type="text" id="otp" placeholder="Enter OTP" required>
+            <button type="button" onclick="verifyOTP()">Verify OTP</button>
+        </div> -->
+    
+        <label for="emergency1">Emergency Contact 1</label>
+        <input type="text" id="relation1" name="relation1" placeholder="Relation" required>
+        <input type="text" id="Gphone1" name="Gphone1" placeholder="Mobile" required>
+    
+        <label for="emergency2">Emergency Contact 2</label>
+        <input type="text" id="relation2" name="relation2" placeholder="Relation" required>
+        <input type="text" id="Gphone2" name="Gphone2" placeholder="Mobile" required>
+    
+        <label for="userid">User ID</label>
+        <input type="text" id="userid" name="userid" required>
+    
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+    
+        <input type="checkbox" id="terms" name="termsandcon" required>
+        I agree <a href="terms&conditions.html">terms & conditions</a>
+    
+        <button type="submit">Sign Up</button>
+    </form>
+    
+    <div class="info">
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    
+</div>
+
+<!-- <script>
+    function sendOTP() {
+        let email = document.getElementById("email").value;
+        fetch("/send-otp", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("OTP sent to your email!");
+                document.getElementById("otpSection").style.display = "block";
+            } else {
+                alert("Error sending OTP!");
+            }
+        });
+    }
+
+    function verifyOTP() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let otp = document.getElementById("otp").value;
+
+        fetch("/verify-otp", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password, otp })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Registration successful!");
+                window.location.href = "/login.html"; // Redirect to login page
+            } else {
+                alert("Invalid OTP!");
+            }
+        });
+    }
+</script> -->
+
+<script src="script.js"></script>
+<!-- <script>
+    document.getElementById("registerForm").addEventListener("submit", handleUserRegistration);
+</script> -->
+
+</body>
+</html>

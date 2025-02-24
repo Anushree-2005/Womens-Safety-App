@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Dashboard - RAKSHAK</title>
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f9;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0077cc;
+    color: white;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.navbar .nav-links li {
+    display: inline;
+}
+
+.navbar .nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar .nav-links li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Section */
+.dashboard {
+    text-align: center;
+    margin: 30px 20px;
+}
+
+.dashboard h1 {
+    font-size: 32px;
+    color: #333;
+}
+
+.dashboard p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Features Section */
+.feature-section {
+    margin: 30px 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feature-section h2 {
+    color: #0077cc;
+}
+
+.feature-section p {
+    color: #555;
+    font-size: 16px;
+}
+
+.feature-section button {
+    padding: 10px 15px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.feature-section button:hover {
+    background-color: #005bb5;
+}
+
+.feature-section input {
+    padding: 8px;
+    width: 70%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #0077cc;
+    color: white;
+    margin-top: 30px;
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">RAKSHAK</div>
+            <ul class="nav-links">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#alerts">Emergency Alerts</a></li>
+                <li><a href="#search">Search Users</a></li>
+                <li><a href="#initiatives">Safety Initiatives</a></li>
+                <li><a href="c">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="dashboard">
+            <h1>Welcome to the Police Portal</h1>
+            <p>Access tools and information to ensure safety and security.</p>
+        </section>
+
+        <section id="alerts" class="feature-section">
+            <h2>Emergency Alerts</h2>
+            <p>View and respond to emergency alerts raised by users.</p>
+            <button onclick="viewAlerts()">View Alerts</button>
+        </section>
+
+        <section id="search" class="feature-section">
+            <h2>Search User Profiles</h2>
+            <p>Search user profiles for details and safety checks.</p>
+            <input type="text" placeholder="Enter User ID" id="userid" name="userid">
+            <button onclick="searchUser()">Search</button>
+        </section>
+
+        <section id="initiatives" class="feature-section">
+            <h2>Manage Safety Initiatives</h2>
+            <p>Create and manage campaigns to promote women’s safety.</p>
+            <button>Manage Initiatives</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 RAKSHAK - Women’s Safety Platform. All rights reserved.</p>
+    </footer>
+
+    <script src="police.js"></script>
+</body>
+</html>
