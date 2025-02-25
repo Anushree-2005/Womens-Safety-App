@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Functionality</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .logout-btn {
+            background-color: #d9534f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .logout-btn:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Welcome to the Dashboard</h2>
+    <p>Click the button below to log out.</p>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+    <script>
+        function logout() {
+            alert("You have been logged out successfully!");
+            window.location.href = "login.html"; // Redirect to the login page
+        }
+    </script>
+
+</body>
+</html>

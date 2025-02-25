@@ -1,0 +1,105 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Help</title>
+</head>
+<body>
+    <h2>Help & Support</h2>
+    <p>If you need any assistance, contact us at support@example.com</p>
+    <a href="menubar.html">Back to Menu</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Emergency Contacts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+        }
+        .emergency-list {
+            list-style: none;
+            padding: 0;
+        }
+        .emergency-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .call-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .call-btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Emergency Contacts</h2>
+        <ul class="emergency-list">
+            <li class="emergency-item">
+                <span>🚔 Police</span>
+                <button class="call-btn" onclick="callEmergency('100')">Call 100</button>
+            </li>
+            <li class="emergency-item">
+                <span>🚑 Ambulance</span>
+                <button class="call-btn" onclick="callEmergency('108')">Call 108</button>
+            </li>
+            <li class="emergency-item">
+                <span>🔥 Fire Department</span>
+                <button class="call-btn" onclick="callEmergency('101')">Call 101</button>
+            </li>
+            <li class="emergency-item">
+                <span>📞 Women Helpline</span>
+                <button class="call-btn" onclick="callEmergency('1091')">Call 1091</button>
+            </li>
+            <li class="emergency-item">
+                <span>👩‍⚖️ Domestic Abuse Helpline</span>
+                <button class="call-btn" onclick="callEmergency('181')">Call 181</button>
+            </li>
+            <li class="emergency-item">
+                <span>📞 Child Helpline</span>
+                <button class="call-btn" onclick="callEmergency('1098')">Call 1098</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function callEmergency(number) {
+            window.location.href = "tel:" + number;
+        }
+    </script>
+
+</body>
+</html>
+

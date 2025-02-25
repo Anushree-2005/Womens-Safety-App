@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakshak App</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+        ul li {
+            display: inline;
+        }
+        ul li a {
+            text-decoration: none;
+            color: blue;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .section {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+        }
+        .active {
+            display: block;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #222;
+            color: white;
+        }
+        .dark-mode a {
+            color: lightblue;
+        }
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Rakshak Women's Safety App</h2>
+
+    <!-- Navigation Menu -->
+    <ul>
+        <li><a onclick="showSection('home')">Home</a></li>
+        <li><a onclick="showSection('friends')">Friends</a></li>
+        <li><a onclick="showSection('feedback')">Feedback</a></li>
+        <li><a onclick="showSection('legal')">Legal</a></li>
+        <li><a onclick="showSection('help')">Help</a></li>
+        <li><a onclick="showSection('settings')">Settings</a></li>
+    </ul>
+
+    <!-- Sections -->
+    <div id="home" class="section active">
+        <h3>Welcome to Rakshak</h3>
+        <p>This is a women's safety app designed to help you in emergencies.</p>
+    </div>
+
+    <div id="friends" class="section">
+        <h3>Friends</h3>
+        <p>Manage your trusted contacts.</p>
+    </div>
+
+    <div id="feedback" class="section">
+        <h3>Feedback</h3>
+        <p>Share your experience with us.</p>
+    </div>
+
+    <div id="legal" class="section">
+        <h3>Legal</h3>
+        <p>Know your rights and legal assistance.</p>
+    </div>
+
+    <div id="help" class="section">
+        <h3>Help</h3>
+        <p>Get support and assistance.</p>
+    </div>
+
+    <!-- Settings Section with Dark Mode Toggle -->
+    <div id="settings" class="section">
+        <h3>Settings</h3>
+        <div class="toggle-container">
+            <span>Dark Mode</span>
+            <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+        </div>
+    </div>
+
+    <script>
+        // Function to show the selected section
+        function showSection(sectionId) {
+            let sections = document.querySelectorAll(".section");
+            sections.forEach(section => section.style.display = "none");
+            document.getElementById(sectionId).style.display = "block";
+        }
+
+        // Function to enable or disable Dark Mode
+        function toggleDarkMode() {
+            let body = document.body;
+            let toggle = document.getElementById("darkModeToggle");
+
+            if (toggle.checked) {
+                body.classList.add("dark-mode");
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                body.classList.remove("dark-mode");
+                localStorage.setItem("darkMode", "disabled");
+            }
+        }
+
+        // Load Dark Mode preference on page load
+        window.onload = function() {
+            if (localStorage.getItem("darkMode") === "enabled") {
+                document.body.classList.add("dark-mode");
+                document.getElementById("darkModeToggle").checked = true;
+            }
+        };
+    </script>
+
+</body>
+</html>

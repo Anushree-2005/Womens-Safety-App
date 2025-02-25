@@ -1,0 +1,156 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback</title>
+</head>
+<body>
+    <h2>Feedback Form</h2>
+    <form>
+        <label for="message">Your Feedback:</label>
+        <textarea id="message" rows="4" cols="30"></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="menubar.html">Back to Menu</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .feedback-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+        .smiley-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+        }
+        .smiley {
+            font-size: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .smiley.selected {
+            color: #007bff; /* Highlight selected emoji */
+            transform: scale(2.2);
+        }
+        textarea {
+            width: 100%;
+            height: 60px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="feedback-box">
+        <h3>We want your opinion!</h3>
+        <p>How satisfied are you with our product?</p>
+        
+        <div class="smiley-container">
+            <span class="smiley" onclick="selectSmiley(this)">😠</span>
+            <span class="smiley" onclick="selectSmiley(this)">😞</span>
+            <span class="smiley" onclick="selectSmiley(this)">😐</span>
+            <span class="smiley" onclick="selectSmiley(this)">😊</span>
+            <span class="smiley" onclick="selectSmiley(this)">😁</span>
+        </div>
+
+        <p>What do you like/not like about our product?</p>
+        <textarea placeholder="Please fill in your answer"></textarea>
+        <!-- <button class="btn" onclick="submitFeedback()">Submit</button>
+        <p class="message" id="successMessage">Thank you for your feedback! 😊</p> -->
+        <!-- <button class="btn" onclick="submitFeedback()">Submit</button> -->
+         <button id="sumbit Button">submit</button>
+
+        
+        <!-- <button class="btn">Submit</button> -->
+    </div>
+    
+    <!--popup styling-->
+    <style>
+        .popup {
+          display: none;
+          position: fixed;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background-color: white;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          text-align: center;
+        }
+      </style>
+
+
+
+        <!-- Popup Message -->
+        <div class="popup" id="popup">
+
+            <h2>Thank you for your feedback! 😊</h2>
+            <p> Your message has been sent</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    
+
+     <script>
+        function selectSmiley(element) {
+            document.querySelectorAll('.smiley').forEach(smiley => {
+                smiley.classList.remove('selected'); // Remove highlight from others
+            });
+            element.classList.add('selected'); // Highlight clicked emoji
+        }
+    </script> 
+
+
+    <!--new script for popup-->
+    <script>
+        const submitButton = document.getElementById("submitButton");
+        const popup = document.getElementById("popup");
+      
+        submitButton.addEventListener("click", () => {
+          popup.style.display = "block";
+        });
+      
+        function closePopup() {
+          popup.style.display = "none";
+        }
+      </script>
+
+</body>
+</html>
+

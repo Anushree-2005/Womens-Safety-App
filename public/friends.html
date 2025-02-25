@@ -1,0 +1,160 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Friends</title>
+</head>
+<body>
+    <h2>Friends List</h2>
+    <ul>
+        <li>John Doe</li>
+        <li>Jane Smith</li>
+        <li>Michael Brown</li>
+    </ul>
+    <a href="menubar.html">Back to Menu</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends - Rakshak App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            margin: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+        }
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .add-btn {
+            width: 100%;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .add-btn:hover {
+            background: #45a049;
+        }
+        .friend-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .friend-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .search-box {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Friends List</h2>
+
+        <!-- Search Bar -->
+        <input type="text" id="searchFriend" class="search-box" placeholder="Search friend..." onkeyup="searchFriend()">
+
+        <!-- Add Friend Form -->
+        <input type="text" id="friendName" placeholder="Enter Friend's Name">
+        <input type="text" id="friendNumber" placeholder="Enter Contact Number">
+        <button class="add-btn" onclick="addFriend()">Add Friend</button>
+
+        <!-- Friends List -->
+        <div id="friendsContainer" class="friend-list"></div>
+    </div>
+
+    <script>
+        let friends = [];
+
+        // Function to Add Friend
+        function addFriend() {
+            let name = document.getElementById("friendName").value.trim();
+            let number = document.getElementById("friendNumber").value.trim();
+
+            if (name === "" || number === "") {
+                alert("Please enter both name and contact number.");
+                return;
+            }
+
+            let friend = { name, number };
+            friends.push(friend);
+            document.getElementById("friendName").value = "";
+            document.getElementById("friendNumber").value = "";
+
+            displayFriends();
+        }
+
+        // Function to Display Friends
+        function displayFriends() {
+            let container = document.getElementById("friendsContainer");
+            container.innerHTML = "";
+
+            friends.forEach((friend, index) => {
+                container.innerHTML += `
+                    <div class="friend-item">
+                        <span>${friend.name} - ${friend.number}</span>
+                        <button onclick="removeFriend(${index})" style="background: red; color: white; border: none; border-radius: 3px; cursor: pointer;">X</button>
+                    </div>
+                `;
+            });
+        }
+
+        // Function to Remove Friend
+        function removeFriend(index) {
+            friends.splice(index, 1);
+            displayFriends();
+        }
+
+        // Function to Search Friends
+        function searchFriend() {
+            let searchInput = document.getElementById("searchFriend").value.toLowerCase();
+            let container = document.getElementById("friendsContainer");
+            container.innerHTML = "";
+
+            let filteredFriends = friends.filter(friend => friend.name.toLowerCase().includes(searchInput));
+
+            filteredFriends.forEach((friend, index) => {
+                container.innerHTML += `
+                    <div class="friend-item">
+                        <span>${friend.name} - ${friend.number}</span>
+                        <button onclick="removeFriend(${index})" style="background: red; color: white; border: none; border-radius: 3px; cursor: pointer;">X</button>
+                    </div>
+                `;
+            });
+        }
+    </script>
+
+</body>
+</html>
+
