@@ -50,8 +50,8 @@ router.use(session({
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: "chavananushree05@gmail.com",
-        pass: "itwm fjvc mzkz tupc"
+        user: "rakshakwomenssafety@gmail.com",
+        pass: "cmor zrzm qpxq vven"
     }
 });
 
@@ -72,7 +72,7 @@ router.post('/send-otp', (req, res) => {
     req.session.email = email;
 
     const mailOptions = {
-        from: "chavananushree05@gmail.com",
+        from: "rakshakwomenssafety@gmail.com",
         to: email,
         subject: "Email Verification OTP",
         text: `Your OTP for verification is ${otp}. It will expire in 5 minutes.`
