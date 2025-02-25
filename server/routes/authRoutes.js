@@ -1,6 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const session = require('express-session');
+const nodemailer = require('nodemailer');
 
 // Registration
 
@@ -33,6 +36,71 @@ router.post('/login', (req, res) => {
             res.status(401).send('Invalid credentials');
         }
     });
+});
+
+
+router.use(session({
+    secret: 'secretKey',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 300000 } // 5 minutes expiry
+}));
+
+// Nodemailer Transporter Setup
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: "chavananushree05@gmail.com",
+        pass: "itwm fjvc mzkz tupc"
+    }
+});
+
+// Generate OTP
+function generateOTP() {
+    return Math.floor(100000 + Math.random() * 900000); // 6-digit OTP
+}
+
+// Send OTP
+router.post('/send-otp', (req, res) => {
+    const { email } = req.body;
+    if (!email) {
+        return res.status(400).json({ message: "Email is required" });
+    }
+
+    const otp = generateOTP();
+    req.session.otp = otp;
+    req.session.email = email;
+
+    const mailOptions = {
+        from: "chavananushree05@gmail.com",
+        to: email,
+        subject: "Email Verification OTP",
+        text: `Your OTP for verification is ${otp}. It will expire in 5 minutes.`
+    };
+
+    transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ message: "Failed to send OTP" });
+        }
+        res.json({ message: "OTP sent successfully" });
+    });
+});
+
+// Verify OTP
+router.post('/verify-otp', (req, res) => {
+    const { email, otp } = req.body;
+    
+    if (!email || !otp) {
+        return res.status(400).json({ message: "Email and OTP are required" });
+    }
+
+    if (req.session.otp && req.session.email === email && req.session.otp == otp) {
+        req.session.otp = null; // Clear OTP after successful verification
+        res.json({ message: "OTP verified successfully" });
+    } else {
+        res.status(400).json({ message: "Invalid OTP or OTP expired" });
+    }
 });
 
 module.exports = router;
