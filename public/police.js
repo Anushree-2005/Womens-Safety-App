@@ -1,18 +1,36 @@
-function searchUser() {
-    let userid = document.getElementById("userid").value;
+// Search user profile
+function searchUser(){
+document.getElementById('searchBtn').addEventListener('click', function() {
+    const userId = document.getElementById('userIdInput').value;
 
-    fetch(`http://localhost:5000/getUser/${userid}`)
+    if (!userId) {
+        alert('Please enter a User ID');
+        return;
+    }
+
+    fetch(`/get-user/${userId}`)
         .then(response => response.json())
         .then(data => {
-            if (data.length > 0) {
-                document.getElementById("userid").innerHTML = `
-                    <p><strong>Name:</strong> ${data[0].name}</p>
-                    <p><strong>Email:</strong> ${data[0].email}</p>
-                    <p><strong>Phone:</strong> ${data[0].phone}</p>
-                `;
-            } else {
-                document.getElementById("userid").innerHTML = "<p>No user found.</p>";
+            if (data.error) {
+                alert(data.error);
+                return;
             }
+            
+            // Populate the profile card
+            document.getElementById('userImage').src = data.image_url || 'assets/blank-profile-picture.webp';
+            document.getElementById('userName').textContent = data.name;
+            document.getElementById('userPhone').textContent = data.phone;
+            document.getElementById('userEmail').textContent = data.email;
+            document.getElementById('userRelation1').textContent = data.relation1;
+            document.getElementById('Gphone1').textContent=data.Gphone1;
+            document.getElementById('userRelation2').textContent = data.relation2;
+            document.getElementById('Gphone2').textContent=data.Gphone2;
+
+
+
+            // Show the profile section
+            document.getElementById('userProfile').classList.remove('hidden');
         })
-        .catch(error => console.error("Error fetching user:", error));
+        .catch(error => console.error('Error fetching user:', error));
+});
 }

@@ -63,7 +63,9 @@ body {
     font-size: 18px;
     color: #666;
 }
-
+.hidden {
+    display: none;
+}
 /* Features Section */
 .feature-section {
     margin: 30px 20px;
@@ -113,6 +115,83 @@ footer {
     margin-top: 30px;
 }
 
+#userProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+#userImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#userProfile {
+    width: 350px;
+    background: linear-gradient(135deg, #ffffff, #f8f8f8);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    margin: 20px auto;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #ddd;
+}
+
+#userImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #007bff;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.info {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 15px;
+    text-decoration: underline;
+}
+
+.guardian {
+    background: #f1f1f1;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.guardian p {
+    font-size: 14px;
+    color: #444;
+    margin: 3px 0;
+}
+
+
     </style>
 </head>
 
@@ -144,9 +223,26 @@ footer {
         <section id="search" class="feature-section">
             <h2>Search User Profiles</h2>
             <p>Search user profiles for details and safety checks.</p>
-            <input type="text" placeholder="Enter User ID" id="userid" name="userid">
-            <button onclick="searchUser()">Search</button>
+            <input type="text" placeholder="Enter User ID" id="userIdInput" name="userid">
+            <button id="searchBtn" onclick="searchUser()">Search</button>
         </section>
+        <!-- User Profile Card -->
+        <div id="userProfile" class="hidden">
+            <img id="userImage" src="./assets/blank-profile-picture.webp" alt="User Image">
+            <h2 id="userName"></h2>
+            <p class="info"><strong>Phone:</strong> <span id="userPhone"></span></p>
+            <p class="info"><strong>Email:</strong> <span id="userEmail"></span></p>
+            <h3 class="section-title"><strong>Guardians:</strong></h3>
+            <div class="guardian">
+            <p><strong>Relation:</strong> <span id="userRelation1"></span></p>
+            <p><strong>Contact:</strong><span id="Gphone1"></span></p>
+            </div>
+            <div class="guardian">
+            <p><strong>Relation:</strong> <span id="userRelation2"></span></p>
+            <p><strong>Contact:</strong><span id="Gphone2"></span></p>
+            </div>
+        </div>
+
 
         <section id="initiatives" class="feature-section">
             <h2>Manage Safety Initiatives</h2>

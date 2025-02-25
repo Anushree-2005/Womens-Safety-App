@@ -67,11 +67,7 @@ const storage = multer.diskStorage({
       res.status(400).send("No file uploaded.");
     }
   });
-  
-//   // Start the server
-//   app.listen(3000, () => {
-//     console.log("Server running on http://localhost:3000");
-//   });
+    
 
 
 app.use(cors());

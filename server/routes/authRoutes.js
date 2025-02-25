@@ -103,4 +103,21 @@ router.post('/verify-otp', (req, res) => {
     }
 });
 
+// Fetch User Profile by ID
+router.get('/get-user/:id', (req, res) => {
+    const userId = req.params.id;
+    
+    const query = `SELECT name, phone, email, profile_image, relation1, Gphone1, relation2, Gphone2 FROM users WHERE userid = ?`;
+
+    db.query(query, [userId], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database query failed' });
+        }
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        res.json(results[0]);
+    });
+});
+
 module.exports = router;
