@@ -75,7 +75,7 @@ const storage = multer.diskStorage({
 
 
 app.use(cors());
-app.use(express.json());R
+app.use(express.json());
 
 // API to fetch user details by User ID
 app.get("/getUser/:userid", (req, res) => {
