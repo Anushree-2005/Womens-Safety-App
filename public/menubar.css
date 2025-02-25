@@ -14,7 +14,7 @@
   
   /* Header */
   .app-header {
-    background-color: #ff42b7; /* Adjust to your desired shade of purple */
+    background-color: #ff3366; /* Adjust to your desired shade of purple */
     color: #ffffff;
     display: flex;
     justify-content: space-between;
@@ -165,4 +165,8 @@
   .menu-item:hover {
     transform: translateY(-2px);
   }
-  
+ 
+  i{
+    font-size: 30px;
+    
+  }
