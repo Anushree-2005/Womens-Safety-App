@@ -1,3 +1,35 @@
+
+// function loadEmergencyAlerts() {
+//     fetch("/getAlerts")
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.success) {
+//                 let alertsContainer = document.getElementById("alerts");
+//                 alertsContainer.innerHTML = "";
+                
+//                 data.alerts.forEach(alert => {
+//                     alertsContainer.innerHTML += `
+//                         <div class="alert-card">
+//                             <h3>${alert.name}</h3>
+//                             <p><b>Phone:</b> ${alert.phone}</p>
+//                             <p><b>Email:</b> ${alert.email}</p>
+//                             <p><b>Location:</b> <a href="https://www.google.com/maps?q=${alert.latitude},${alert.longitude}" target="_blank">View on Map</a></p>
+//                             <p><b>Time:</b> ${new Date(alert.timestamp).toLocaleString()}</p>
+//                         </div>
+//                     `;
+//                 });
+//             }
+//         })
+//         .catch(error => console.error("Error:", error));
+// }
+
+// // Auto-refresh alerts every 10 seconds
+// setInterval(loadEmergencyAlerts, 10000);
+// loadEmergencyAlerts();
+
+
+
+
 // Search user profile
 function searchUser(){
 document.getElementById('searchBtn').addEventListener('click', function() {

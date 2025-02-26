@@ -114,4 +114,6 @@ body {
     }
 }
 
-
+.hidden{
+    display: none;
+}

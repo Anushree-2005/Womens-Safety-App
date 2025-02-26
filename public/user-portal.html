@@ -38,7 +38,7 @@
       <img src="./assets/panicAlarm.png" alt="Panic Alarm">
       <p>Panic Alarm</p>
     </button>
-    <button id="sos" class="footer-item">
+    <button id="sosButton" class="footer-item">
       <img src="./assets/SOS.png" id="SOS" alt="SOS">
     </button>
 
@@ -46,24 +46,14 @@
       <img src="./assets/recordIcon.png" alt="Record" class="recording-button">
       <p>Record</p>
     </button>
-    <button id="fake-call" class="footer-item">
+    <button id="fake-call" class="footer-item" >
       <!-- <img src="fake-call-icon.png" alt="Fake Call"> -->
-      <i class="fa-solid fa-phone" alt="Fake Call"></i>
+      <a href="fakeCall.html"><i class="fa-solid fa-phone" alt="Fake Call"></i></a>
       <p>Fake Call</p>
     </button>
   </footer>
 
-  <!--............. Fake Call............. -->
-  <div id="fakeCallScreen" class="fake-call">
-    <div class="caller-info">
-        <img src="caller.png" alt="Caller Image" class="caller-img">
-        <h2>Unknown Caller</h2>
-        <p>+91 9876543210</p>
-    </div>
-    <div class="call-buttons">
-        <button class="accept" id="accept" onclick="answerFakeCall()">Accept</button>
-        <button class="reject" id="reject" onclick="rejectFakeCall()">Reject</button>
-    </div>
+
 </div>
 
 <audio id="ringtone" src="./assets/siren.wav"></audio>

@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require("multer");
@@ -6,6 +7,7 @@ const path = require("path");
 const cors = require("cors");
 const app = express();
 const db = require('./db');
+const twilio = require("twilio");
 
 
 app.use(bodyParser.json());
@@ -87,8 +89,23 @@ app.get("/getUser/:userid", (req, res) => {
     });
 });
  
+// Save Feedback API
+app.post("/submit-feedback", (req, res) => {
+    const { rating, message } = req.body;
 
+    if (!rating || !message) {
+        return res.status(400).json({ error: "Rating and message are required!" });
+    }
 
+    const sql = "INSERT INTO feedback (rating, message) VALUES (?, ?)";
+    db.query(sql, [rating, message], (err, result) => {
+        if (err) {
+            console.error("Error inserting data:", err);
+            return res.status(500).json({ error: "Database error" });
+        }
+        res.json({ success: true, message: "Feedback submitted successfully!" });
+    });
+});
 
 
 const PORT = 5000;

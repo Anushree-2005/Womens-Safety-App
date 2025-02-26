@@ -41,23 +41,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     // Function to display SOS
-    function startSOS() {
-      mainContent.innerHTML = `
-        <h2>SOS Activated!</h2>
-        <p>Help is on the way. Stay safe!</p>
-      `;
-    }
+    document.getElementById("sosButton").addEventListener("click", function () {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(sendSOS, showError);
+      } else {
+          alert("Geolocation is not supported by this browser.");
+      }
+  });
+  
+  function sendSOS(position) {
+      let latitude = position.coords.latitude;
+      let longitude = position.coords.longitude;
+  
+      fetch("/sendSOS", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+              userId: "12345", // Replace with logged-in user ID
+              name: "Pratiksha", // Replace with actual user name
+              phone: "8484053364", // Replace with user phone
+              email: "riddhiambadaskar@gmail.com", // Replace with user email
+              latitude: latitude,
+              longitude: longitude,
+          }),
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              alert("SOS Alert Sent Successfully!");
+          } else {
+              alert("Failed to send SOS.");
+          }
+      })
+      .catch(error => console.error("Error:", error));
+  }
+  
+  function showError(error) {
+      alert("Location access denied! Please enable GPS.");
+  }
+  
   
     // Function to display a fake call
-    function fakeCall() {
-      mainContent.innerHTML = `
-        <h2>Fake Call Activated</h2>
-        <p>Simulating an incoming call...</p>
-      `;
-      setTimeout(() => {
-        alert("Incoming call from Emergency Contact!");
-      }, 3000); // Simulates a 3-second delay for the call
-    }
   
     // Functions for panic alarm and recording
     // function panicAlarm() {
@@ -215,10 +239,10 @@ document.getElementById("record").addEventListener("click", () => {
   
     // Attach event listeners to footer items
     document.getElementById("track-me").addEventListener("click", displayLocation);
-    document.getElementById("sos").addEventListener("click", startSOS);
+    // document.getElementById("sos").addEventListener("click", startSOS);
     document.getElementById("fake-call").addEventListener("click", fakeCall);
-    document.getElementById("accept").addEventListener("click", answerFakeCall);
-    document.getElementById("reject").addEventListener("click", rejectFakeCall);
+    // document.getElementById("accept").addEventListener("click", answerFakeCall);
+    // document.getElementById("reject").addEventListener("click", rejectFakeCall);
 
     
     document.getElementById("panic-alarm").addEventListener("click", panicAlarm);
