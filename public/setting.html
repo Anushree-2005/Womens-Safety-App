@@ -1,16 +1,206 @@
-<!DOCTYPE html>
-<html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            flex-direction: column;
+        }
+        .settings-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+        .terminate-btn {
+            background-color: #800020;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .terminate-btn:hover {
+            background-color: #b30030;
+        }
+        
+        /* Popup Styles */
+        .popup, .auth-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+            width: 300px;
+        }
+        .popup p, .auth-popup p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        .btn {
+            padding: 10px;
+            width: 45%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .no-btn {
+            background-color: #800020;
+            color: white;
+            border: none;
+        }
+        .yes-btn {
+            background-color: white;
+            color: #800020;
+            border: 2px solid #800020;
+        }
+        .yes-btn:hover {
+            background-color: #800020;
+            color: white;
+        }
+        
+        /* Auth Form */
+        .input-field {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h2>Settings</h2>
-    <label>Enable Notifications</label>
-    <input type="checkbox">
-    <br>
-    <label>Dark Mode</label>
-    <input type="checkbox">
-    <br>
-    <a href="menubar.html">Back to Menu</a>
+
+    <div class="settings-container">
+        <h2>Settings</h2>
+        <button class="terminate-btn" onclick="showConfirmation()">Terminate Account</button>
+    </div>
+
+    <!-- Confirmation Popup -->
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+        }
+        .settings-container {
+            max-width: 300px;
+            margin: 50px auto;
+            background: white;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f0e6eb;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 85%;
+        }
+        .option:hover {
+            background: #e0c7d4;
+        }
+        .icon {
+            font-size: 20px;
+            color: #6a1b4d;
+            margin-bottom: 5px;
+        }
+        .text {
+            font-size: 16px;
+            color: #6a1b4d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="settings-container">
+        <!-- Terminate Account Option -->
+        <div class="option" onclick="confirmTermination()">
+            <div class="icon">👤</div>  <!-- Replace with an actual icon -->
+            <div class="text">Terminate Account</div>
+        </div>
+    
+    </div>
+
+    <script>
+        function confirmTermination() {
+            let confirmation = confirm("Are you sure you want to terminate your account?");
+            if (confirmation) {
+                let username = prompt("Enter your username:");
+                let password = prompt("Enter your password:");
+                if (username && password) {
+                    alert("Your account has been terminated.");
+                    // Here, you can send this data to a backend API to actually terminate the account.
+                } else {
+                    alert("Termination cancelled. Please enter valid credentials.");
+                }
+            }
+        }
+    </script>
+
 </body>
 </html>
