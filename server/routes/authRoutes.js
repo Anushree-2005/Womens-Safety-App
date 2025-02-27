@@ -5,7 +5,7 @@ const db = require('../db');
 const session = require('express-session');
 const nodemailer = require('nodemailer');
 
-// Registration
+// Registration ✅
 
 router.post('/register', (req, res) => {
     const { profile_image, name, phone, email, userid, password, relation1, Gphone1, relation2, Gphone2} = req.body;
@@ -19,7 +19,7 @@ router.post('/register', (req, res) => {
     });
 });
 
-// Login
+// Login ✅
 router.post('/login', (req, res) => {
     const { userid, password } = req.body;
     const policePassword = "police123"; // Specific password for police login
@@ -46,7 +46,7 @@ router.use(session({
     cookie: { maxAge: 300000 } // 5 minutes expiry
 }));
 
-// Nodemailer Transporter Setup
+// Nodemailer Transporter Setup ✅
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -55,12 +55,12 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Generate OTP
+// Generate OTP ✅
 function generateOTP() {
     return Math.floor(100000 + Math.random() * 900000); // 6-digit OTP
 }
 
-// Send OTP
+// Send OTP ✅
 router.post('/send-otp', (req, res) => {
     const { email } = req.body;
     if (!email) {
@@ -87,7 +87,7 @@ router.post('/send-otp', (req, res) => {
     });
 });
 
-// Verify OTP
+// Verify OTP ✅
 router.post('/verify-otp', (req, res) => {
     const { email, otp } = req.body;
     
@@ -103,7 +103,7 @@ router.post('/verify-otp', (req, res) => {
     }
 });
 
-// Fetch User Profile by ID
+// Fetch User Profile by ID ✅
 router.get('/get-user/:id', (req, res) => {
     const userId = req.params.id;
     
@@ -119,5 +119,6 @@ router.get('/get-user/:id', (req, res) => {
         res.json(results[0]);
     });
 });
+
 
 module.exports = router;

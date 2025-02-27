@@ -10,6 +10,7 @@ const db = require('./db');
 const twilio = require("twilio");
 
 
+
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
@@ -70,12 +71,12 @@ const storage = multer.diskStorage({
     }
   });
     
-
-
 app.use(cors());
 app.use(express.json());
 
-// API to fetch user details by User ID
+
+
+// API to fetch user details by User ID ✅
 app.get("/getUser/:userid", (req, res) => {
     const userid = req.params.userid;
     const query = "SELECT * FROM users WHERE id = ?";
@@ -89,16 +90,17 @@ app.get("/getUser/:userid", (req, res) => {
     });
 });
  
-// Save Feedback API
-app.post("/submit-feedback", (req, res) => {
-    const { rating, message } = req.body;
 
-    if (!rating || !message) {
-        return res.status(400).json({ error: "Rating and message are required!" });
+// Save Feedback API ✅
+app.post("/submit-feedback", (req, res) => {
+    const { rating, email, message } = req.body;
+
+    if (!rating || !email || !message ) {
+        return res.status(400).json({ error: "Rating, email and message are required!" });
     }
 
-    const sql = "INSERT INTO feedback (rating, message) VALUES (?, ?)";
-    db.query(sql, [rating, message], (err, result) => {
+    const sql = "INSERT INTO feedback (rating, email, message) VALUES (?, ?, ?)";
+    db.query(sql, [rating, email, message], (err, result) => {
         if (err) {
             console.error("Error inserting data:", err);
             return res.status(500).json({ error: "Database error" });
