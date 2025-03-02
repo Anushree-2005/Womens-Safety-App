@@ -31,14 +31,24 @@
             transform: scale(1.8);
             transition: transform 0.3s ease-in-out;
         }
+        #inputtitle{
+            display: flex;
+            align-content: start;
+            padding-left: 4%;
+            margin-bottom: 1%;
+        }
+        #email{
+            width: 90%;
+        }
         textarea {
-            width: 100%;
+            width: 90%;
             height: 80px;
             margin-top: 10px;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
         }
+
         button {
             background-color: blue;
             color: white;
@@ -76,8 +86,8 @@
 <body>
 
     <div class="container" id="feedback-container">
-        <h2><b>We want your opinion!</b></h2>
-        <p>How satisfied are you with our product?</p>
+        <h2><b>We want your opinion</b></h2>
+        <p>How do you feel using our app ?</p>
 
         <div class="emoji-container">
             <span class="emoji" onclick="selectEmoji(this, 1)">😡</span>
@@ -88,7 +98,9 @@
         </div>
         
 
-        <p>What do you like/not like about our product?</p>
+        <p id="inputtitle">Email ID</p>
+        <input type="email" name="email" id="email" class="email" required placeholder="Enter your email">
+        <p id="inputtitle">Tell us more</p>
         <textarea id="feedback-message" placeholder="Please fill in your answer"></textarea>
         <button onclick="submitFeedback()">Submit</button>
 
@@ -123,8 +135,11 @@ function selectEmoji(emoji, rating) {
         // Submit feedback
         function submitFeedback() {
     let message = document.getElementById("feedback-message").value;
+    let email = document.getElementById("email").value
 
-    if (selectedRating == 0) {
+    if (selectedRating == 0)
+    
+     {
         alert("Please select a rating!");
         return;
     }
@@ -133,11 +148,15 @@ function selectEmoji(emoji, rating) {
         alert("Please enter your feedback message!");
         return;
     }
-
+    if (email === "") {
+        alert("Please enter your Email ID!");
+        return;
+    }
     // Prepare feedback data
     let feedbackData = {
         rating: selectedRating,
-        message: message
+        message: message,
+        email: email
     };
 
     // Send data to server using Fetch API

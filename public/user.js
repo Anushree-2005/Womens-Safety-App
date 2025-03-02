@@ -99,7 +99,7 @@ function panicAlarm() {
   `;
 
   // Play the alarm sound
-  const alarmSound = new Audio("./assets/siren.wav"); // Sample alarm sound
+  const alarmSound = new Audio("./assets/security-alarm-63578.mp3"); // Sample alarm sound
   alarmSound.loop = true;
   alarmSound.play();
 
